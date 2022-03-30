@@ -11,7 +11,7 @@ public class primesToSymbols {
 	public static String listOfInt(int listOfPrimes[]) {
 		String symbolsOfPrimes = "";	
 		for(int i = 0; i < listOfPrimes.length; i++) {
-			if(boolGeodeNumbering(listOfPrimes[i])) {
+			if(boolGodelNumbering(listOfPrimes[i])) {
 				symbolsOfPrimes += godelNumbering(listOfPrimes[i]);
 			}
 			else {
@@ -21,7 +21,7 @@ public class primesToSymbols {
 		return symbolsOfPrimes;
 	}
 	
-	public static boolean boolGeodeNumbering(int i) {
+	public static boolean boolGodelNumbering(int i) {
 		if(i <= 19) {
 			if(i%2 != 0) {
 				return true;
