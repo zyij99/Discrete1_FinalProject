@@ -1,0 +1,141 @@
+Name(s): Brandon Zheng, Justin Truong
+*/
+
+import java.util.*;
+
+public class Godel{
+	
+	public static void main(String[] args) {
+		
+		int godelSequence[];
+		int listOfPrimes[];
+		
+		Scanner console = new Scanner(System.in);
+		
+		System.out.println("Please enter the length of the list of primes: ");
+		int listLength = console.nextInt();
+		
+		listOfPrimes = createList(listLength);
+		if(!acceptablePrimes(listOfPrimes)) {
+			System.out.println("Unacceptable list of primes");
+		}
+		else {
+			System.out.println("Please enter Godel Sequence Numbers: ");
+			godelSequence = createList(listLength);
+				if(godelStatementAcceptable(godelSequence)) {
+					System.out.println("Symbols According to Godel's Statement: " + statementToSymbols(godelSequence));
+				}else {
+					System.out.println("Unacceptable godel statement.");
+				}
+		}
+		
+	}
+	
+	public static boolean acceptablePrimes(int[] A) {
+		int[] primeMatrix = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199};
+		
+		for(int i = 0; i < A.length; i++) {
+			if(!isPrime(A[i]) || (A[i] != primeMatrix[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static int[] createList(int arrayLength) {
+		Scanner console = new Scanner(System.in);
+
+		int arrayList[] = new int[arrayLength];
+		
+		for(int i = 0; i < arrayList.length ;i++) {
+			System.out.println("Please enter an integer");
+			int arrayInt = console.nextInt();
+			arrayList[i] = arrayInt;
+		}
+		
+		return arrayList;
+	}
+	
+	public static boolean godelStatementAcceptable(int A[]) {
+		for(int i = 0; i < A.length; i++) {
+			if (godelNumbering(A[i]) == null){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	public static boolean isPrime(int numInput) {
+    	for(int i = 0; i < numInput; i++) {
+    		for(int j = 0; j < numInput; j++) {
+    			if((i*j) == numInput && i != 1 && j != 1) {
+    				return false;
+    			}
+    		}
+    	}
+    	return true;
+    }
+	
+	public static String statementToSymbols(int godelStatement[]) {
+		String symbolsOfPrimes = "";	
+		for(int i = 0; i < godelStatement.length; i++) {
+			if(boolGodelNumbering(godelStatement[i])) {
+				symbolsOfPrimes += godelNumbering(godelStatement[i]);
+			}
+			else {
+				return "Unacceptable List of Primes";
+			}
+		}
+		return symbolsOfPrimes;
+	}
+
+	public static boolean boolGodelNumbering(int i) {
+		if(i <= 23) {
+			if(i%2 != 0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static String godelNumbering(int i) {
+		if(i == 1) {
+			return "0";
+		}
+		else if(i == 3) {
+			return "f";
+		}
+		else if(i == 5) {
+			return "¬";
+		}
+		else if(i == 7) {
+			return "∨";
+		}
+		else if(i == 9) {
+			return "∀";
+		}
+		else if(i == 11) {
+			return "(";
+		}
+		else if(i == 13) {
+			return ")";
+		}
+		else if(i == 15) {
+			return "∧";
+		}
+		else if(i == 17) {
+			return "∃";
+		}
+		else if(i == 19) {
+			return "=";
+		}
+		else if(i == 21) {
+			return "x";
+		}
+		else if(i == 23) {
+			return "y";
+		}
+		return null;
+	}
+}
