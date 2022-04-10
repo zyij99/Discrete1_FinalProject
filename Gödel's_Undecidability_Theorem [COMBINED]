@@ -18,7 +18,7 @@ public class GödelUndecidabilityTheorem{
 		System.out.println("When n is 23, i is: " + whatIsI(23));
 
         //Godel Statement to Symbols
-	int godelSequence[];
+		int godelSequence[];
 		int listOfPrimes[];
 		
 		Scanner console = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class GödelUndecidabilityTheorem{
 		int listLength = console.nextInt();
 		
 		listOfPrimes = createList(listLength);
-		if(!acceptablePrimes(listOfPrimes)) {
+		if(!acceptablePrimes(listOfPrimes, listLength)) {
 			System.out.println("Unacceptable list of primes");
 		}
 		else {
@@ -39,7 +39,6 @@ public class GödelUndecidabilityTheorem{
 					System.out.println("Unacceptable godel statement.");
 				}
 		}
-
     }
     //Goldbach Conjecture
     public static boolean isPrime(int numInput) {
@@ -86,9 +85,19 @@ public class GödelUndecidabilityTheorem{
 		return count;
 	}
 
-    //List of Primes to Symbols
-    public static boolean acceptablePrimes(int[] A) {
-		int[] primeMatrix = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199};
+    //Godel Statement to Symbols
+    public static boolean acceptablePrimes(int[] A, int arrayLength) {
+		
+		int[] primeMatrix = new int [arrayLength];
+		
+		int arrayIndex = 0, num = 2;
+		while(arrayIndex < arrayLength) {
+			if(isPrime(num)) {
+				primeMatrix[arrayIndex] = num;
+				arrayIndex++;
+			}
+			num++;
+		}
 		
 		for(int i = 0; i < A.length; i++) {
 			if(!isPrime(A[i]) || (A[i] != primeMatrix[i])) {
