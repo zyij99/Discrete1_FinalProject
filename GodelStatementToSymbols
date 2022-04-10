@@ -13,7 +13,7 @@ public class Godel{
 		int listLength = console.nextInt();
 		
 		listOfPrimes = createList(listLength);
-		if(!acceptablePrimes(listOfPrimes)) {
+		if(!acceptablePrimes(listOfPrimes, listLength)) {
 			System.out.println("Unacceptable list of primes");
 		}
 		else {
@@ -71,7 +71,6 @@ public class Godel{
 		}
 		return true;
 	}
-	
 	
 	public static boolean isPrime(int numInput) {
     	for(int i = 0; i < numInput; i++) {
