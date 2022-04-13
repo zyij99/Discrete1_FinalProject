@@ -1,48 +1,54 @@
+
 import java.util.*;
 
 public class Godel{
 	
 	public static void main(String[] args) {
 		
-		int godelSequence[];
-		int listOfPrimes[];
+		int godelSequence[], listOfPrimes[];
 		
 		Scanner console = new Scanner(System.in);
 		
-		System.out.println("Please enter the length of the list of primes: ");
-		int listLength = console.nextInt();
+		try {
+			System.out.println("Please enter the length of the list of primes: ");
+			int listLength = console.nextInt();
+			
+			listOfPrimes = createList(listLength);
+			if(!acceptablePrimes(listOfPrimes, listLength)) {
+				System.out.println("Unacceptable list of primes");
+			}
+			else {
+				System.out.println("Please enter Godel Sequence Numbers: ");
+				godelSequence = createList(listLength);
+					if(godelStatementAcceptable(godelSequence)) {
+						System.out.println("Symbols According to Godel's Statement: " + statementToSymbols(godelSequence));
+					}else {
+						System.out.println("Unacceptable godel statement.");
+					}
+			}
+		} 
 		
-		listOfPrimes = createList(listLength);
-		if(!acceptablePrimes(listOfPrimes, listLength)) {
-			System.out.println("Unacceptable list of primes");
-		}
-		else {
-			System.out.println("Please enter Godel Sequence Numbers: ");
-			godelSequence = createList(listLength);
-				if(godelStatementAcceptable(godelSequence)) {
-					System.out.println("Symbols According to Godel's Statement: " + statementToSymbols(godelSequence));
-				}else {
-					System.out.println("Unacceptable godel statement.");
-				}
+		catch(InputMismatchException exception) {
+			System.out.println("Input is not an integer");
 		}
 		
 	}
 	
 	public static boolean acceptablePrimes(int[] A, int arrayLength) {
 		
-		int[] primeMatrix = new int [arrayLength];
+		int[] primeArray = new int [arrayLength];
 		
 		int arrayIndex = 0, num = 2;
 		while(arrayIndex < arrayLength) {
 			if(isPrime(num)) {
-				primeMatrix[arrayIndex] = num;
+				primeArray[arrayIndex] = num;
 				arrayIndex++;
 			}
 			num++;
 		}
 		
 		for(int i = 0; i < A.length; i++) {
-			if(!isPrime(A[i]) || (A[i] != primeMatrix[i])) {
+			if(!isPrime(A[i]) || (A[i] != primeArray[i])) {
 				return false;
 			}
 		}
