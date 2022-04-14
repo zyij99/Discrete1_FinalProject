@@ -20,11 +20,11 @@ public class GodelStatementToSymbols{
 			else {
 				System.out.println("Please enter Godel Sequence Numbers: ");
 				godelSequence = createList(listLength);
-					if(godelStatementAcceptable(godelSequence)) {
-						System.out.println("Symbols According to Godel's Statement: " + statementToSymbols(godelSequence));
-					}else {
-						System.out.println("Unacceptable godel statement.");
-					}
+				if(godelStatementAcceptable(godelSequence)) {
+					System.out.println("Symbols According to Godel's Statement: " + statementToSymbols(godelSequence));
+				}else {
+					System.out.println("Unacceptable godel statement.");
+				}
 			}
 		} 
 		
