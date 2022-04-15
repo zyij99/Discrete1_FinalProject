@@ -13,12 +13,13 @@ public class GodelStatementToSymbols{
 			System.out.println("Please enter the length of the list of primes: ");
 			int listLength = console.nextInt();
 			
+			System.out.println("\nEnter prime integers (These are the prime numbers that are being raised by the godel statements)");
 			listOfPrimes = createList(listLength);
 			if(!acceptablePrimes(listOfPrimes, listLength)) {
 				System.out.println("Unacceptable list of primes");
 			}
 			else {
-				System.out.println("Please enter Godel Sequence Numbers: ");
+				System.out.println("\nPlease enter Godel Sequence Numbers (Odd numbers from 1-23): ");
 				godelSequence = createList(listLength);
 				if(godelStatementAcceptable(godelSequence)) {
 					System.out.println("Symbols According to Godel's Statement: " + statementToSymbols(godelSequence));
