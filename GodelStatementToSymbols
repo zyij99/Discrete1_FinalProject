@@ -2,6 +2,7 @@
 Coding Problem 3
 Names: Brandon Zheng & Justin Truong
 */
+
 import java.util.*;
 
 public class GodelStatementToSymbols{
