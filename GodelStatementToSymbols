@@ -34,7 +34,7 @@ public class GodelStatementToSymbols{
 			}
 		} 
 		
-		catch(InputMismatchException exception) {
+		catch(InputMismatchException e) {
 			System.out.println("Input is not an integer");
 		}
 	
