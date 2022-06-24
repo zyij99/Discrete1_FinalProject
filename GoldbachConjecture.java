@@ -1,8 +1,3 @@
-/*
-Name(s): Brandon Zheng, Justin Truong
-Gödel's Undecidability Theorem
-Computer Project 1
-*/
 
 import java.util.*;
 
